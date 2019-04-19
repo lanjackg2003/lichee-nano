@@ -18,7 +18,7 @@ RUN mkdir -p /opt/lichee
 copy ./gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabi/ /opt/gcc/
 copy ./zlib-1.2.11/ /opt/zlib-1.2.11/
 copy ./sunxi-tools/ /opt/sunxi-tools/
-RUN cd /opt/zlib-1.2.11 && && \
+RUN cd /opt/zlib-1.2.11 && \
 ./configure && \
 make && \
 make install && \
