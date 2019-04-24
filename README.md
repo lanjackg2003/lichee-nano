@@ -1,22 +1,44 @@
-lichee-nano
-This docker image is for build the lichee-nano.
-Follow few steps to run the container.
+lichee-nano  
+This docker image contains a system that is ready to build the lichee-nano firmware.  
 
- # 1、Pull the image
+## Getting started
 
-docker pull jacklan/licheepi_nano
+ ### Pull the image
+     docker pull jacklan/licheepi_nano
+     
+ ### Get the source code
+    cd && mkdir lichee-code && cd lichee-code
+    git clone --single-branch --branch nano-v2018.01 https://github.com/Lichee-Pi/u-boot.git
+    git clone --single-branch --branch f1c100s-480272lcd-test https://github.com/Icenowy/linux.git    
+        
+## Running the container
+Mount the source code directories and run interactive:
+  
+   `docker run -it -v ~/lichee-code:/opt/lichee jacklan/licheepi_nano /bin/bash`
 
+You can give the container access to the device like this:
 
- # 2、Run the container
+   `docker run -it -v ~/lichee-code:/opt/lichee -v /dev/bus/usb:/dev/bus/usb jacklan/licheepi_nano /bin/bash`
+   
+Make sure the name of the device matches your system.
 
- ## Mapping USB device into the container 
+## Building
 
--v /dev/bus/usb:/dev/bus/usb
+### U-Boot
 
- ## Mapping source code into the container 
+First configure:
 
- -v code:/opt/lichee 
+    cd /opt/lichee/u-boot
+    make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- licheepi_nano_spiflash_defconfig
+    make ARCH=arm menuconfig
+    
+Then build it:
 
-At the end it will look like this:
+    make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j8
+    
+### Linux
 
-`docker run -it -v code:/opt/lichee --name jacklan/licheepi_nano`
+    make ARCH=arm menuconfig
+    make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j4 
+    
+    
