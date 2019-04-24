@@ -22,7 +22,9 @@ You can give the container access to the device like this:
    
 Make sure the name of the device matches your system.
 
-## Building uboot
+## Building
+
+### U-Boot
 
 First configure:
 
@@ -34,7 +36,7 @@ Then build it:
 
     make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j8
     
-## Building linux
+### Linux
 
     make ARCH=arm menuconfig
     make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j4 
