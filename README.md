@@ -18,7 +18,7 @@ Mount the source code directories and run interactive:
 
 You can give the container access to the device like this:
 
-   `docker run -it -v ~/lichee-code:/opt/lichee -v /dev/bus/usb:/dev/bus/usb jacklan/licheepi_nano /bin/bash`
+   `docker run -it -v ~/lichee-code:/opt/lichee --privileged -v /dev/bus/usb:/dev/bus/usb jacklan/licheepi_nano /bin/bash`
    
 Make sure the name of the device matches your system.
 
