@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER jack <lanjackg2003@qq.com>
 RUN apt-get update
-RUN apt install -y wget tar git build-essential libncurses5-dev python swig python-dev bc libusb-1.0-0-dev pkg-config libssl-dev libc6-i386 lib32stdc++6 lib32z1 cpio unzip mtd-utils vim
+RUN apt install -y wget tar git build-essential libncurses5-dev python swig python-dev bc libusb-1.0-0-dev pkg-config libssl-dev libc6-i386 lib32stdc++6 lib32z1 cpio unzip mtd-utils fakeroot squashfs-tools vim
 RUN mkdir -p /opt/lichee && \
 mkdir -p /opt/build && \
 cd /opt/build && \
